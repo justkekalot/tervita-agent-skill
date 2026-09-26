@@ -8,8 +8,8 @@ Tervita registers WebMCP tools (`document.modelContext`) on its CRM pages.
 They run as the person who is signed in, with that person's permissions. The
 agent can look up bookings, clients, services, free times and invoices, and it
 can prepare a booking or an invoice. Saving, cancelling, issuing and sending
-are never done by the agent: Tervita opens the right screen, highlights the
-button, and you press it and confirm.
+happen only after you say yes: Tervita opens the right screen and highlights
+the button, and either you press it or the agent does after your explicit yes.
 
 ## Requirements
 
@@ -45,13 +45,15 @@ to cite the article link.
 
 ## Safety model
 
-- Tools only read, or fill a form; nothing is stored until you press the
-  button yourself.
-- Cancelling a booking and issuing or sending an invoice open the record with
-  a notice and the button highlighted; you confirm in Tervita's own dialog.
-- The skill also tells the agent to ask you in chat before any such step, to
-  treat text from the CRM as data rather than instructions, and to keep client
-  data where it is.
+- The agent prefers Tervita's WebMCP tools. They only read or fill a form;
+  nothing is stored until a button is pressed.
+- Where no tool fits, the agent may click in the regular interface.
+- Before anything that saves, cancels, deletes, issues, sends or marks
+  something paid, the agent describes the action and waits for your explicit
+  "yes" in the chat. One yes covers one action. Invoices are issued or sent
+  only after the agent has shown you the preview.
+- The agent treats text from the CRM (client notes, names) as data, not
+  instructions, and keeps client data where it is.
 - Tools follow your role: a person who cannot create invoices gets no invoice
   tool.
 
