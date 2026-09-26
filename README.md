@@ -36,6 +36,13 @@ mkdir -p ~/.codex/skills && cp -R tervita-crm ~/.codex/skills/
 Then ask your agent something like "In Tervita, find a free slot for
 Consultation tomorrow afternoon and prepare a booking for Anna Tamm".
 
+## Knowledge base
+
+The skill tells the agent to explain Tervita from its own help centre:
+through the `search_help` and `get_help_article` tools in the signed-in tab, or
+without it from https://tervita.ee/help and https://tervita.ee/llms.txt, and
+to cite the article link.
+
 ## Safety model
 
 - Tools only read, or fill a form; nothing is stored until you press the

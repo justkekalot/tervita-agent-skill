@@ -44,6 +44,8 @@ so and stop; do not work around it by clicking through the UI.
 
 | Tool | What it does |
 | --- | --- |
+| `search_help` `{query}` | Searches Tervita's help centre (interface language): 3 articles with excerpt and link |
+| `get_help_article` `{url, part?}` | The text of one help article, in parts |
 | `list_appointments` `{date}` | Bookings of a day (local time), with booking ids |
 | `find_client` `{query}` | Client ids by name, email or phone (no contact details returned) |
 | `list_services` | Active services: duration, price, id |
@@ -84,6 +86,11 @@ so and stop; do not work around it by clicking through the UI.
    user gave you for that person; leave the field empty otherwise.
 9. If a tool answers that the subscription has ended, or anything else fails,
    tell the user the tool's answer and stop.
+10. **Explain Tervita from its own help centre.** Before telling the user how a
+    feature works, look it up with `search_help` (without the tab: the help
+    centre at https://tervita.ee/help and https://tervita.ee/llms.txt) and give
+    the article link. If the help centre does not cover it, say so instead of
+    guessing.
 
 ## Typical flows
 
@@ -97,6 +104,9 @@ and press Save."
 Invoice." Sending is a separate step: `list_invoices` -> user agrees ->
 `request_send_invoice` -> "Check the preview, then press Issue and send and
 confirm."
+
+**"How do I ..."**: `search_help` -> if needed `get_help_article` -> answer
+in two or three sentences with the article link.
 
 **Cancel a booking**: `list_appointments` for the day -> confirm which one
 with the user -> `request_cancel_appointment` -> "Press Cancel appointment,
